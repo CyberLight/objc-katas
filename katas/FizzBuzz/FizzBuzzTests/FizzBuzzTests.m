@@ -27,11 +27,22 @@
     [super tearDown];
 }
 
-- (void)testExample
+- (void)testShouldReturnFizzForNumberDividedByThree
 {
     NSString * result = [fizzBuzzProcessor process:6];
     NSLog(@"Result: '%@'", result);
     STAssertEquals(result, @"Fizz", @"Should return Fizz");
+}
+
+- (void)testShouldReturnFizzForRangeOfNumbersDevidedByThree
+{
+    NSArray * numbers = @[@3,@6,@12,@24,@30];
+    
+    for (int i =0; i < [numbers count]; i++) {
+        NSString * result = [fizzBuzzProcessor process:(int)numbers[i]];
+        STAssertEquals(result, @"Fizz", @"Should return Fizz");
+    }
+    
 }
 
 @end
