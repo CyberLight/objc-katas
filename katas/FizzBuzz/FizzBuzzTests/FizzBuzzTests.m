@@ -47,7 +47,8 @@
 - (void)testShouldReturnBuzzForNumberdividedByFive
 {
     NSString * result = [fizzBuzzProcessor process:5];
-    STAssertEquals(result, "Buzz", @"Should return 'Buzz'");
+    NSLog(@"Result = %@", result);
+    STAssertEquals(result, @"Buzz", @"Should return 'Buzz'");
 }
 
 @end
