@@ -37,10 +37,7 @@
 {
     NSArray * numbers = @[@3,@6,@12,@24,@30];
     
-    for (int i =0; i < [numbers count]; i++) {
-        NSString * result = [fizzBuzzProcessor process:(int)numbers[i]];
-        STAssertEquals(result, @"Fizz", @"Should return Fizz");
-    }
+   [self checkForAllIn:numbers shouldReturn:@"Fizz"];
     
 }
 
@@ -53,11 +50,15 @@
 - (void)testShouldReturnBuzzForRangeOfNumbersDividedByFive
 {
     NSArray * numbers = @[@5,@10,@20,@25,@40];
-    
-    for (int i =0; i < [numbers count]; i++) {
-        NSString * result = [fizzBuzzProcessor process:(int)numbers[i]];
-        STAssertEquals(result, @"Buzz", @"Should return Buzz");
-    }
+   [self checkForAllIn:numbers shouldReturn:@"Buzz"];
+}
+
+- (void) checkForAllIn:(NSArray *)numbers
+  shouldReturn:(NSString *) expected{
+   for (int i =0; i < [numbers count]; i++) {
+       NSString * result = [fizzBuzzProcessor process:(int)numbers[i]];
+       STAssertEquals(result, expected, [NSString stringWithFormat:@"Should return %@", expected]);
+   }
 }
 
 @end
