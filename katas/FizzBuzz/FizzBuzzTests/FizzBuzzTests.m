@@ -44,11 +44,20 @@
     
 }
 
-- (void)testShouldReturnBuzzForNumberdividedByFive
+- (void)testShouldReturnBuzzForNumberDividedByFive
 {
     NSString * result = [fizzBuzzProcessor process:5];
-    NSLog(@"Result = %@", result);
     STAssertEquals(result, @"Buzz", @"Should return 'Buzz'");
+}
+
+- (void)testShouldReturnBuzzForRangeOfNumbersDividedByFive
+{
+    NSArray * numbers = @[@5,@10,@20,@25,@40];
+    
+    for (int i =0; i < [numbers count]; i++) {
+        NSString * result = [fizzBuzzProcessor process:(int)numbers[i]];
+        STAssertEquals(result, @"Buzz", @"Should return Buzz");
+    }
 }
 
 @end
