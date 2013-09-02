@@ -30,8 +30,7 @@
 - (void)testShouldReturnFizzForNumberDividedByThree
 {
     NSString * result = [fizzBuzzProcessor process:6];
-    NSLog(@"Result: '%@'", result);
-    STAssertEquals(result, @"Fizz", @"Should return Fizz");
+    STAssertEquals(result, @"Fizz", @"Should return 'Fizz'");
 }
 
 - (void)testShouldReturnFizzForRangeOfNumbersDevidedByThree
@@ -43,6 +42,12 @@
         STAssertEquals(result, @"Fizz", @"Should return Fizz");
     }
     
+}
+
+- (void)testShouldReturnBuzzForNumberdividedByFive
+{
+    NSString * result = [fizzBuzzProcessor process:5];
+    STAssertEquals(result, "Buzz", @"Should return 'Buzz'");
 }
 
 @end
