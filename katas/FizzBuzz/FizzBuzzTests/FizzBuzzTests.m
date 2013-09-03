@@ -36,9 +36,7 @@
 - (void)testShouldReturnFizzForRangeOfNumbersDevidedByThree
 {
     NSArray * numbers = @[@3,@6,@12,@24,@30];
-    
    [self checkForAllIn:numbers shouldReturn:@"Fizz"];
-    
 }
 
 - (void)testShouldReturnBuzzForNumberDividedByFive
@@ -50,7 +48,13 @@
 - (void)testShouldReturnBuzzForRangeOfNumbersDividedByFive
 {
     NSArray * numbers = @[@5,@10,@20,@25,@40];
-   [self checkForAllIn:numbers shouldReturn:@"Buzz"];
+    [self checkForAllIn:numbers shouldReturn:@"Buzz"];
+}
+
+- (void)testShouldReturnNumberForNumbersNotDivisibleBy3and5
+{
+    NSString * result = [fizzBuzzProcessor process:2];
+    STAssertEquals(result, @"2", @"Should return 2");
 }
 
 - (void) checkForAllIn:(NSArray *)numbers
