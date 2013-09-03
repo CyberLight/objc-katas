@@ -9,6 +9,9 @@
 #import "FizzBuzzTests.h"
 #import "FizzbuzzProcessor.h"
 
+const NSString * FIZZ = @"Fizz";
+const NSString * BUZZ = @"Buzz";
+
 @implementation FizzBuzzTests{
     FizzBuzzProcessor * fizzBuzzProcessor;
 }
@@ -17,52 +20,54 @@
 {
     [super setUp];
     fizzBuzzProcessor = [[FizzBuzzProcessor alloc] init];
-    // Set-up code here.
 }
 
 - (void)tearDown
 {
-    // Tear-down code here.
-    
     [super tearDown];
 }
 
 - (void)testShouldReturnFizzForNumberDividedByThree
 {
     NSString * result = [fizzBuzzProcessor process:6];
-    STAssertEquals(result, @"Fizz", @"Should return 'Fizz'");
+    STAssertEquals(result, FIZZ,  [self shouldReturn:FIZZ]);
 }
 
 - (void)testShouldReturnFizzForRangeOfNumbersDevidedByThree
 {
     NSArray * numbers = @[@3,@6,@12,@24,@30];
-   [self checkForAllIn:numbers shouldReturn:@"Fizz"];
+   [self checkForAllIn:numbers shouldReturn:FIZZ];
 }
 
 - (void)testShouldReturnBuzzForNumberDividedByFive
 {
     NSString * result = [fizzBuzzProcessor process:5];
-    STAssertEquals(result, @"Buzz", @"Should return 'Buzz'");
+    STAssertEquals(result, BUZZ, [self shouldReturn:BUZZ]);
 }
 
 - (void)testShouldReturnBuzzForRangeOfNumbersDividedByFive
 {
     NSArray * numbers = @[@5,@10,@20,@25,@40];
-    [self checkForAllIn:numbers shouldReturn:@"Buzz"];
+    [self checkForAllIn:numbers shouldReturn:BUZZ];
 }
 
 - (void)testShouldReturnNumberForNumbersNotDivisibleBy3and5
 {
     NSString * result = [fizzBuzzProcessor process:2];
-    STAssertEqualObjects(result, @"2", @"Should return 2");
+    STAssertEqualObjects(result, @"2", [self shouldReturn:@"2"]);
 }
 
 - (void) checkForAllIn:(NSArray *)numbers
-  shouldReturn:(NSString *) expected{
+  shouldReturn:(const NSString *) expected{
    for (int i =0; i < [numbers count]; i++) {
        NSString * result = [fizzBuzzProcessor process:(int)numbers[i]];
-       STAssertEquals(result, expected, [NSString stringWithFormat:@"Should return %@", expected]);
+       STAssertEquals(result, expected, [self shouldReturn:expected]);
    }
+}
+
+- (NSString *) shouldReturn: (const NSString *) value
+{
+    return [NSString stringWithFormat:@"Should return %@", value];
 }
 
 @end
