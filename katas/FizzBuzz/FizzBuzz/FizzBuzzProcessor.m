@@ -11,7 +11,7 @@
 @implementation FizzBuzzProcessor
 
 - (NSString *) process: (int) number{
-    return number % 3 == 0 ? @"Fizz" : (number % 5 == 0 ? @"Buzz" : nil);
+    return number % 3 == 0 ? @"Fizz" : (number % 5 == 0 ? @"Buzz" : [NSString stringWithFormat:@"%d", number]);
 }
 
 

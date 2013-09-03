@@ -54,7 +54,7 @@
 - (void)testShouldReturnNumberForNumbersNotDivisibleBy3and5
 {
     NSString * result = [fizzBuzzProcessor process:2];
-    STAssertEquals(result, @"2", @"Should return 2");
+    STAssertEqualObjects(result, @"2", @"Should return 2");
 }
 
 - (void) checkForAllIn:(NSArray *)numbers
